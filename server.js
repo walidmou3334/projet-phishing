@@ -4,7 +4,7 @@ const path = require("path");
 const pool = require("./db");
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
@@ -28,7 +28,7 @@ app.post("/login-simulation", async (req, res) => {
   const { username, password } = req.body;
 
   const ip =
-    req.headers["x-forwarded-for"] ||
+    req.headers["x-forwarded-for"]?.split(",")[0].trim() ||
     req.socket.remoteAddress ||
     req.ip;
 
@@ -57,7 +57,7 @@ app.post("/login-simulation", async (req, res) => {
       <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Simulation de phishing</title>
+        <title>Simulation pédagogique</title>
         <script src="https://cdn.tailwindcss.com"></script>
       </head>
       <body class="min-h-screen flex items-center justify-center bg-gray-100 px-4">
@@ -66,16 +66,16 @@ app.post("/login-simulation", async (req, res) => {
             !
           </div>
           <h1 class="text-2xl font-bold text-gray-800 mt-4">
-            Simulation de phishing
+            Simulation pédagogique
           </h1>
           <p class="text-gray-600 mt-4 leading-7">
-            Vous venez d’interagir avec une simulation pédagogique.
+            Vous venez d’interagir avec une démonstration éducative.
           </p>
           <p class="text-gray-600 mt-2 leading-7">
-            Votre mot de passe n’a pas été stocké.
+            Aucun mot de passe n’a été stocké.
           </p>
           <p class="text-gray-600 mt-2 leading-7">
-            Cette démonstration sert à montrer comment une interface trompeuse peut piéger un utilisateur.
+            Cette page montre comment une interface trompeuse peut pousser un utilisateur à partager des informations.
           </p>
           <a href="/" class="inline-block mt-6 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl transition">
             Retour
@@ -91,5 +91,5 @@ app.post("/login-simulation", async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Serveur démarré sur http://localhost:${PORT}`);
+  console.log(`Serveur démarré sur le port ${PORT}`);
 });
