@@ -28,13 +28,13 @@ app.post("/login-simulation", async (req, res) => {
   const { username, password } = req.body;
 
   const ip =
-    req.headers["x-forwarded-for"]?.split(",")[0].trim() ||
+    req.headers["x-forwarded-for"]?.split(",")[0]?.trim() ||
     req.socket.remoteAddress ||
     req.ip;
 
   try {
     await pool.query(
-      `INSERT INTO simulation_logs (username, ip_address, status)
+      `INSERT INTO phishing_data (username, ip_address, status)
        VALUES ($1, $2, $3)`,
       [
         username || "inconnu",
