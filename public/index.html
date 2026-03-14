@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulation de connexion</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gray-100 flex items-center justify-center px-4">
+
+  <div class="w-full max-w-md bg-white rounded-2xl shadow-xl p-8">
+    <div class="text-center mb-8">
+      <div class="w-16 h-16 mx-auto rounded-full bg-blue-600 text-white flex items-center justify-center text-2xl font-bold">
+        S
+      </div>
+      <h1 class="mt-4 text-2xl font-bold text-gray-800">Espace Client Sécurisé</h1>
+      <p class="text-sm text-gray-500 mt-2">Veuillez vous connecter pour continuer</p>
+    </div>
+
+    <form action="/login-simulation" method="POST" class="space-y-5">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2">Identifiant</label>
+        <input
+          type="text"
+          name="username"
+          placeholder="Entrez votre identifiant"
+          class="w-full border border-gray-300 rounded-xl px-4 py-3"
+          required
+        />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-2">Mot de passe</label>
+        <input
+          type="password"
+          name="password"
+          placeholder="Entrez votre mot de passe"
+          class="w-full border border-gray-300 rounded-xl px-4 py-3"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl transition"
+      >
+        Se connecter
+      </button>
+    </form>
+
+    <p class="text-xs text-center text-gray-400 mt-6">
+      Interface de démonstration pédagogique
+    </p>
+  </div>
+
+</body>
+</html>
